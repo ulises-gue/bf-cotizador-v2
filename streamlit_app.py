@@ -55,27 +55,14 @@ if uploaded_file is not None:
       for i in range(len(profit_no_format)):
             if route_data["Tipo de Ruta"][i] == "Tramo Corto":
                   if route_data["Sentido"][i] == "Salida":
-                      if profit_no_format[i] >= 0.36:
-                            evaluation.append("Si")
-                      else:
-                            evaluation.append("No")
-            else:
-                  if profit_no_format[i] >= 0.49:
-                        evaluation.append("Si")
+                        evaluation.append("Si" if profit_no_format[i] >= 0.36 else "No")
                   else:
-                        evaluation.append("No")
-            if route_data["Tipo de Ruta"][i] == "Tramo Largo":
+                        evaluation.append("Si" if profit_no_format[i] >= 0.49 else "No")
+            else: 
                   if route_data["Sentido"][i] == "Salida":
-                        if profit_no_format[i] >= 0.15:
-                              evaluation.append("Si")
-                        else:
-                              evaluation.append("No")
+                        evaluation.append("Si" if profit_no_format[i] >= 0.15 else "No")
                   else:
-                        if profit_no_format[i] >= 0.33:
-                              evaluation.append("Si")
-                        else:
-                              evaluation.append("No")
-                              
+                        evaluation.append("Si" if profit_no_format[i] >= 0.33 else "No")
       route_data["Evaluacion"] = evaluation
       
       #We will create a new data frame with the columns we want

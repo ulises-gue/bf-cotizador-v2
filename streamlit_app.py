@@ -26,7 +26,7 @@ if uploaded_file is not None:
 
       #We will create a new column named Distancia that will look for the route in the dictionary we created 
       #and return its distance
-      route_data["Distancia"] = route_data["Data"].map(km)
+      route_data["Distancia"] = route_data["Ruta"].map(km)
 
       #We will create a column that will determine the route type depending on the distance
       route_data["Tipo de Ruta"] = np.where(route_data["Distancia"] <= 400, "Tramo Corto", "Tramo Largo")

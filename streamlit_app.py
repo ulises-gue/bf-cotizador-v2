@@ -75,19 +75,6 @@ if uploaded_file is not None:
       st.write("Evaluacion de Rutas:")
       st.dataframe(route_download)
       
-      #We will convert the data farame to excel
-      output = BytesIO()
-      with pd.ExcelWriter(output, engine="xlsxwriter") as writer:
-          route_download.to_excel(writer, index=False, sheet_name="Evaluacion de Rutas")
-      output.seek(0)
-
-      # Create a download button
-      st.download_button(
-          label="Exportar a Excel",
-          data=output,
-          file_name="Evaluacion_de_Rutas.xlsx",  
-          mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-      )
 else: 
       st.warning("Por favor sube un archivo de Excel para continuar")
 

@@ -17,8 +17,9 @@ cost_per_km = 25.3
 #We will prompt the user to upload a file 
 uploaded_file = st.file_uploader("Sube un archivo de Excel", type=["xlsx"])
 
-#We will create a data frame from the file and display it to the user 
-route_data = pd.read_excel(uploaded_file)
-
-st.write("Este es el archivo cargado")
-st.dataframe(route_data)
+if uploaded_file is not None:
+      route_data = pd.read_excel(uploaded_file)
+      st.write("Este es el Archivo Cargado")
+      st.dataframe(route_data)
+else: 
+      st.warning("Por favor sube un archivo de Excel para continuar")

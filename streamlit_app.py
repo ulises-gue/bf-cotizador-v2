@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
+from io import BytesIO
 
 st.title("Border Freight - Cotizador")
 st.write("Este cotizador esta diseñado para subir un archivo de rutas y evaluar los precios que contiene")
@@ -76,14 +77,15 @@ if uploaded_file is not None:
       
       #We will convert the data farame to excel
       output = BytesIO()
-      with pd.ExcelWriter(output, engine="xlswriter") as writer:
+      with pd.ExcelWriter(output, engine="xlsxwriter") as writer:
             route_download.to_excel(writer, index = False, sheet_name = "Evaluacion de Rutas")
+      output.seek(0)
       
       #We will create a download to Excel button
       st.download_button(
             label = "Exportar a Excel",
-            data = output.getvalue(),
-            file_name = "Evaluacion de Rutas",
+            data = output,
+            file_name = "Evaluacion de Rutas.xlsx",
             mime = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
 else: 
       st.warning("Por favor sube un archivo de Excel para continuar")

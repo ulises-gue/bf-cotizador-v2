@@ -19,4 +19,6 @@ uploaded_file = st.file_uploader("Sube un archivo de Excel", type=["xlsx"])
 
 #We will create a data frame from the file and display it to the user 
 route_data = pd.read_excel(uploaded_file)
-route_data
+
+st.write("Este es el archivo cargado")
+st.dataframe(route_data)

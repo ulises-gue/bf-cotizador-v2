@@ -18,7 +18,7 @@ cost_per_km = 25.3
 uploaded_file = st.file_uploader("Sube un archivo de Excel", type=["xlsx"])
 
 if uploaded_file is not None:
-      route_data = pd.read_excel(uploaded_file)
+      route_data = pd.read_excel(uploaded_file, header = 1)
       st.write("Este es el Archivo Cargado")
       st.dataframe(route_data)
 else: 
